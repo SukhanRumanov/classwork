@@ -1,0 +1,4 @@
+﻿  main.c
+C:\Users\Romochka\source\repos\test_c_code\test_c_code\main.c(16,2): warning C4013: put: нет определения; предполагается "extern" с возвратом типа "int"
+main.obj : error LNK2019: ссылка на неразрешенный внешний символ put в функции main.
+C:\Users\Romochka\source\repos\test_c_code\x64\Debug\test_c_code.exe : fatal error LNK1120: неразрешенных внешних элементов: 1
