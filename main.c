@@ -1,18 +1,16 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 
 
-//Практика 5
+//Практика 6
 #include <stdio.h>
 #include <locale.h>
-#include <math.h>
-#define E 2.71828182845904523536
-#define M_PI            3.14159265358979323846
+#include <math.h>  
 
-
-void dz1();
 void prac1();
 void prac2();
 void prac3();
+
+
 
 int main() {
     setlocale(LC_ALL, "Ru");
@@ -21,67 +19,52 @@ int main() {
     prac1();
 	printf("Задание 2\n\n");
     prac2();
-	printf("Задание 3\n\n");
+    printf("Задание 3\n\n");
     prac3();
-	printf("ДЗ\n\n");
-    dz1();
     return 0;
 }
 
 
-void prac1() {
-    double gr;
-    scanf("%lf", &gr);
-    double rad = gr * M_PI / 180.0;
-    double sin_val = sin(rad);
-    printf("%.0f grad = %.6f\n", gr, sin_val);
+void prac1(){
+    int yeas;
+	printf("Впишите год: ");
+    scanf("%d", &yeas);
+    if (yeas % 4 == 0 && yeas % 100 != 0 || yeas % 400 == 0) {
+        printf("Год %d високосный\n", yeas);
+    }
+    else {
+        printf("Год %d не високосный\n", yeas);
+	}
 }
 
-
 void prac2() {
-    double x;
+    // если x = 4, то F(4) = 45 * 4^2 + 5 = 725
+    // если x = 2 , то F(2) = (5* 2)/(10 * 2^2 + 1) = 0,243902
+    double x, F;
+    printf("Введите x: ");
     scanf("%lf", &x);
-    double k = -4.0;
-    double a = log(fabs(-1.0 * k * x));
-    double b = pow(E, 2.0 * x) + a * x;
-    double y = x * pow(a, 3.0) + pow(b, 2.0);
-    printf("\ny = %.1f\n", y);
+    if (x > 3.6) {
+        F = 45 * pow(x, 2) + 5;
+    }
+    else {
+        F = (5.0 * x) / (10.0 * pow(x, 2) + 1.0);
+    }
+    printf("F(%.6g) = %.6f  (%s)\n", x, F,
+        (x > 3.6) ? "x > 3.6" : "x <= 3.6");
 }
 
 
 void prac3() {
-    int A, B, C;
-    int condition1;
-    int condition2;
+    int A, B;
+	printf("Введите A: ");
+    scanf("%d", &A);
+    printf("Введите B: ");
+    scanf("%d", &B);
 
-    printf("Enter A, B and C: ");
-    scanf("%d %d %d", &A, &B, &C);
-
-    condition1 = (A % 2 == 0 && B % 2 != 0) ||
-        (A % 2 != 0 && B % 2 == 0);
-
-    condition2 = (A % 3 == 0) &&
-        (B % 3 == 0) &&
-        (C % 3 == 0);
-
-    printf("Condition a (1 - yes, 0 - no): %d\n", condition1);
-    printf("Condition b (1 - yes, 0 - no): %d\n", condition2);
-}
-
-void dz1() {
-    double x = 2.444;
-	double y = 0.869 * pow(10, -2);
-	double z = -0.13 * pow(10, 3);
-
-	double num1 = pow(x, y + 1) + pow(E, y -1);
-	double mun1 = 1 + x * fabs(y - tan(z));
-
-	double drob1 = num1 / mun1;
-    
-    double num2 = drob1 * (1 + fabs(y - x));
-    double drob2 = (pow(fabs(y - x), 2)) / 2;
-    double drob3 = (pow(fabs(y - x), 3)) / 3;
-
-	double h = num2 + drob2 - drob3;
-	printf("h = %.5f\n", h);
+    if (B == 0) {
+        printf("Ошибка: деление на ноль\n");
+    }
+    else {
+        printf("%s\n" ,(A% B == 0)? "Да": "Нет");
+	}
 }
