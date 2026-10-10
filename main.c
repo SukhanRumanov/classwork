@@ -189,9 +189,10 @@ void graphic(int num, double x1, double x2, double step) {
 	}
 	if (ymax - ymin < 0.000001) ymax = ymin + 1;
 
-	// вывод сверху вниз: строка i, потом все точки x
+	double dy = (ymax - ymin) / (GRAPH_HEIGHT - 1);  
+	double yrow = ymax;                              
+	
 	for (i = 0; i < GRAPH_HEIGHT; i++) {
-		double yrow = ymax - i * (ymax - ymin) / (GRAPH_HEIGHT - 1);
 		printf("%9.3lf |", yrow);
 
 		j = 0;
@@ -199,7 +200,7 @@ void graphic(int num, double x1, double x2, double step) {
 			j++;
 			if (check_x(x, num)) {
 				double y = F(x, num);
-				int row = (int)((ymax - y) / (ymax - ymin) * (GRAPH_HEIGHT - 1) + 0.5);
+				int row = (int)((ymax - y) / dy + 0.5);
 				if (row == i) printf("*");
 				else printf(" ");
 			}
@@ -208,6 +209,7 @@ void graphic(int num, double x1, double x2, double step) {
 			}
 		}
 		printf("\n");
+		yrow = yrow - dy;   // следующая строка ниже на dy
 	}
 
 	// ось x
