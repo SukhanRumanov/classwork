@@ -15,7 +15,7 @@ int check_x(double x, int num);
 double F(double x, int num);
 void tabulate(int num, double x1, double x2, double step);
 void graphic(int num, double x1, double x2, double step);
-int in_interval(double x, double x1, double x2, int t);
+//int in_interval(double x, double x1, double x2, int t);
 
 
 // проверка введённого диапазона: 1 - ок, 0 - ошибка
@@ -221,7 +221,7 @@ void graphic(int num, double x1, double x2, double step) {
 	}
 }
 
-int in_interval(double x, double x1, double x2, int t) {
+/*int in_interval(double x, double x1, double x2, int t) {
 	if (t == 1) {
 		return (x > x1 && x < x2);
 	}
@@ -234,4 +234,4 @@ int in_interval(double x, double x1, double x2, int t) {
 	else {
 		return (x >= x1 && x <= x2);
 	}
-}
+}*/
