@@ -107,15 +107,12 @@ int prac3(int A, int B) {
 
 int dz(float x, float y) {
     if (x> 6 || x < 0 || y > 6 || y < 0) {
-        puts("1");
         return -1;
     }
     if (y > -1.0 * x + 6.0) {
-        puts("2");
         return -1;
     }
     if (y < -2.0 * x + 4.0) {
-        puts("3");
         return -1;
     }
     return 1;
