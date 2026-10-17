@@ -9,12 +9,13 @@
 int prac1(int yeas);
 double prac2(double x);
 int prac3(int A, int B);
+int dz(float x, float y);
 
 
 
 int main() {
     setlocale(LC_ALL, "Ru");
-    printf("Практика 4\n");
+    /*printf("Практика 4\n");
     printf("Задание 1\n\n");
     int yeas;
     printf("Впишите год: ");
@@ -48,8 +49,23 @@ int main() {
     }
     else {
         printf("%s\n", (A % B == 0) ? "Да" : "Нет");
+    }*/
+
+    printf("ДЗ\n\n");
+	float x1, y1;
+    printf("Введите x: ");
+    scanf("%f", &x1);
+    printf("Введите y: ");
+    scanf("%f", &y1);
+    int result = dz(x1, y1);
+    if (result == 1) {
+        printf("Точка (%.2f, %.2f) принадлежит области\n", x1, y1);
     }
-    return 0;
+    else{
+        printf("Точка (%.2f, %.2f) не принадлежит области\n", x1, y1);
+    }
+	return 0;
+
 }
 
 
@@ -87,4 +103,20 @@ int prac3(int A, int B) {
         a = 0;
     }
     return a;
+}
+
+int dz(float x, float y) {
+    if (x> 6 || x < 0 || y > 6 || y < 0) {
+        puts("1");
+        return -1;
+    }
+    if (y > -1.0 * x + 6.0) {
+        puts("2");
+        return -1;
+    }
+    if (y < -2.0 * x + 4.0) {
+        puts("3");
+        return -1;
+    }
+    return 1;
 }
