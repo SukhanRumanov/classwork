@@ -1,41 +1,37 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 
-
-//Практика 6
 #include <stdio.h>
 #include <locale.h>
 #include <math.h>  
 
-int prac1(int yeas);
+int prac1(int years);
 double prac2(double x);
 int prac3(int A, int B);
 int dz(float x, float y);
 
 
-
 int main() {
     setlocale(LC_ALL, "Ru");
-    /*printf("Практика 4\n");
     printf("Задание 1\n\n");
-    int yeas;
+    int years;
     printf("Впишите год: ");
-    scanf("%d", &yeas);
-    int year = prac1(yeas);
-    if (year = 1) {
-        printf("Год %d високосный\n", yeas);
+    scanf("%d", &years);
+    int year = prac1(years);
+    if (year == 1) {
+        printf("Год %d високосный\n", years);
     }
     else {
-        printf("Год %d не високосный\n", yeas);
+        printf("Год %d не високосный\n", years);
     }
-    printf("Задание 2\n\n");
-    
-	double x;
+    printf("\nЗадание 2\n\n");
+
+    double x;
     printf("Введите x: ");
     scanf("%lf", &x);
     double F = prac2(x);
     printf("F(%.6g) = %.6f  (%s)\n", x, F,
         (x > 3.6) ? "x > 3.6" : "x <= 3.6");
-    printf("Задание 3\n\n");
+    printf("\nЗадание 3\n\n");
 
     int A, B;
     printf("Введите A: ");
@@ -44,15 +40,15 @@ int main() {
     scanf("%d", &B);
 
     int a = prac3(A, B);
-    if (a == 1) {
+    if (a == -1) {
         printf("Ошибка: деление на ноль\n");
     }
     else {
-        printf("%s\n", (A % B == 0) ? "Да" : "Нет");
-    }*/
+        printf("%s\n", (a == 0) ? "Да" : "Нет");
+    }
 
-    printf("ДЗ\n\n");
-	float x1, y1;
+    printf("\nдз\n\n");
+    float x1, y1;
     printf("Введите x: ");
     scanf("%f", &x1);
     printf("Введите y: ");
@@ -61,17 +57,17 @@ int main() {
     if (result == 1) {
         printf("Точка (%.2f, %.2f) принадлежит области\n", x1, y1);
     }
-    else{
+    else {
         printf("Точка (%.2f, %.2f) не принадлежит области\n", x1, y1);
     }
-	return 0;
+    return 0;
 
 }
 
 
-int prac1(int yeas) {
+int prac1(int years) {
     int a = 0;
-    if (yeas % 4 == 0 && yeas % 100 != 0 || yeas % 400 == 0) {
+    if (years % 4 == 0 && years % 100 != 0 || years % 400 == 0) {
         a = 1;
     }
     else {
@@ -97,25 +93,26 @@ double prac2(double x) {
 int prac3(int A, int B) {
     int a = 0;
     if (B == 0) {
-        a = 1;
+        a = -1;
+        return a;
+    }
+    if (A % B == 0){
+        a = 0;
     }
     else {
-        a = 0;
+		a = 1;
     }
     return a;
 }
 
 int dz(float x, float y) {
-    if (x> 6 || x < 0 || y > 6 || y < 0) {
-        puts("1");
+    if (x > 6 || x < 0 || y > 6 || y < 0) {
         return -1;
     }
     if (y > -1.0 * x + 6.0) {
-        puts("2");
         return -1;
     }
     if (y < -2.0 * x + 4.0) {
-        puts("3");
         return -1;
     }
     return 1;
