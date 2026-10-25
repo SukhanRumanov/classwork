@@ -1,5 +1,2 @@
 ﻿  main.c
-C:\Users\Romochka\source\repos\test_c_code\test_c_code\main.c(38,6): warning C4013: can_cal: нет определения; предполагается "extern" с возвратом типа "int"
-C:\Users\Romochka\source\repos\test_c_code\test_c_code\main.c(144,1): warning C4715: calculator: значение возвращается не при всех путях выполнения
-  LINK : не найден или не выполнена сборка C:\Users\Romochka\source\repos\test_c_code\x64\Debug\test_c_code.exe при последней инкрементной компоновке; выполняется полная компоновка
   test_c_code.vcxproj -> C:\Users\Romochka\source\repos\test_c_code\x64\Debug\test_c_code.exe
