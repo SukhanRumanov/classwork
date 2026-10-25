@@ -3,131 +3,210 @@
 #include <locale.h>
 #include <math.h>
 
+#define ROW 9
+#define COL 9
+#define PI 3.14159265358979
 
-char symbol(int i, int n, char c1, char c2);
-int sum(int m, int n); 
-double get_power_of_two(int n, int use_k);
-void tabulate(double step);
-double f(double x);
-double sumN(int n);
+int mult(int a, int b);
+int sum(int a, int b);
+int count_even(int n);
+double vx(int k, double d1, double d2, double a);
+double vy(int k, double d1, double d2, double a);
+int in_quad(double x, double y, double d1, double d2, double a);
+void draw_figure(char sym, double d1, double d2, double ang);
 
 int main()
-
 {
-	setlocale(LC_ALL, "Russian");
-	puts("Задание 0");
-	int count;
-	char c1, c2;
-	printf("Введите количество символов: ");
-	scanf("%d", &count);
-	printf("Введите символ для первой половины:");
-	scanf(" %c", &c1);
-	printf("Введите символ для второй половины:");
-	scanf(" %c", &c2);
-	printf("+");
-	for (int i = 0; i < count; i++) {
-		printf("%c!", symbol(i, count, c1, c2));
-	}
-	puts("Задание 1");
-	int m, n;
-	printf("Введите M:");
-	scanf("%d", &m);
-	printf("Введите N:");
-	scanf("%d", &n);
-	int s = sum(m, n);
-	int k = n - m + 1;
-	printf("выполнено %d раз\n сумма = %d\n", k, s);
+	setlocale(LC_ALL, "Ru");
 
-
-	puts("\nЗадание 1A (Пункты 1-4)");
-	int n_pow;
-	printf("Введите степень n: ");
-	scanf("%d", &n_pow);
-
-	for (int i = 0; i <= n_pow; i++) {
-		double val = get_power_of_two(i, 0);
-		printf("2^%d = %10.0f", i, val);
-
-		if (val == 1024) {
-			printf("   Результат: 1K");
+	puts("задание 1 (таблица Пифагора):");
+	for (int row = 1; row <= ROW; ++row)
+	{
+		for (int col = 1; col <= COL; col++)
+		{
+			printf("%5d", mult(col, row));
 		}
 		printf("\n");
 	}
 
-	puts("\nЗадание 1A (Пункт 5)");
-	int m_val;
-	printf("Введите заданное целое число m: ");
-	scanf("%d", &m_val);
+	puts("\nзадание 1.2 (левый нижний треугольник):");
+	for (int row = 1; row <= ROW; ++row)
+	{
+		for (int col = 1; col <= row; col++)
+		{
+			printf("%5d", mult(col, row));
+		}
+		printf("\n");
+	}
 
-	for (int i = 0; i <= m_val; i++) {
-		double val_k = get_power_of_two(i, 1);
-		printf("2^%d = %10.1fK\n", i, val_k);
+	puts("\nзадание 1.3 (вариант 15, таблица сложения):");
+	for (int a = 1; a <= 9; a++)
+	{
+		for (int b = 1; b <= 9; b++)
+		{
+			printf("%d + %d = %2d   ", a, b, sum(a, b));
+		}
+		printf("\n");
 	}
 
 
-	puts("задание 2");
-	double step;
-	printf("Введите шаг табуляции: ");
-	scanf("%lf", &step);
-	tabulate(step);
+	puts("\nзадание 2 (количество чётных цифр):");
+	while (1)
+	{
+		int num;
+		char again;
+		printf("Введите число: ");
+		scanf("%d", &num);
+		int cnt = count_even(num);
+		printf("Чётных цифр: %d\n", cnt);
+		printf("Продолжить? (Да - y, нет - n): ");
+		scanf(" %c", &again);
+		if (again == 'n')
+		{
+			break;
+		}
+	}
 
-	puts("задание 3");
-	int n1;
-	printf("Введите n: ");
-	scanf("%d", &n1);
-	double sum_result = sumN(n1);
-	printf("Сумма = %.6lf\n", sum_result);
 
+	puts("\nзадание 3 (четырёхугольник по диагоналям и углу):");
+	while (1)
+	{
+		char sym; 
+		double d1, d2, ang; 
+		printf("Введите символ, из которого будет строиться фигура: "); 
+		scanf(" %c", &sym); 
+		printf("Введите d1: "); 
+		scanf("%lf", &d1); 
+		printf("Введите d2: "); 
+		scanf("%lf", &d2); 
+		printf("Введите угол между диагоналями (в градусах): ");
+		scanf("%lf", &ang);
+
+		draw_figure(sym, d1, d2, ang);
+
+		int cont;
+		printf("\nПродолжить? (Да - введите любое число, Нет - введите 0): ");
+		scanf("%d", &cont);
+		if (cont == 0)
+		{
+			break;
+		}
+	}
 
 	return 0;
 }
 
-char symbol(int i, int n, char c1, char c2) {
-	if (i <= n / 2) {
-		return c1;
+
+int mult(int a, int b)
+{
+	return a * b;
+}
+
+int sum(int a, int b)
+{
+	return a + b;
+}
+
+int count_even(int n)
+{
+	if (n < 0)
+	{
+		n = -n;
 	}
-	else {
-		return c2;
+	if (n == 0)
+	{
+		return 1;
+	}
+	int cnt = 0;
+	while (n > 0)
+	{
+		if ((n % 10) % 2 == 0)
+		{
+			cnt++;
+		}
+		n /= 10;
+	}
+	return cnt;
+}
+
+void draw_figure(char sym, double d1, double d2, double ang)
+{
+	if (d1 <= 0 || d2 <= 0 || ang <= 0 || ang >= 180)
+	{
+		puts("ошибка: d1 и d2 должны быть больше 0, угол от 0 до 180");
+		return;
+	}
+
+	double ymax = fmax(vy(2, d1, d2, ang), 0);
+	double ymin = fmin(vy(4, d1, d2, ang), 0);
+	double xmax = fmax(vx(3, d1, d2, ang), vx(2, d1, d2, ang));
+	double xmin = fmin(vx(1, d1, d2, ang), vx(4, d1, d2, ang));
+
+	printf("\n");
+	for (int r = (int)ceil(ymax); r >= (int)floor(ymin); r--)
+	{
+		for (int cx = (int)floor(xmin * 2); cx <= (int)ceil(xmax * 2); cx++)
+		{
+			if (in_quad(cx * 0.5, r, d1, d2, ang))
+			{
+				printf("%c", sym);
+			}
+			else
+			{
+				printf(" ");
+			}
+		}
+		printf("\n");
 	}
 }
 
-int sum(int m, int n) {
-	int s = 0;
-	for (int i = m; i <= n; i++) {
-		s += i;
+double vx(int k, double d1, double d2, double a)
+{
+	double rad = a * PI / 180;
+	switch (k)
+	{
+	case 1:
+		return -0.4 * d1;
+	case 2:
+		return 0.6 * d2 * cos(rad);
+	case 3:
+		return 0.6 * d1;
+	default:
+		return -0.4 * d2 * cos(rad);
 	}
-	return s;
 }
 
-double get_power_of_two(int n, int use_k) {
-	double result = 1.0;
-	for (int i = 0; i < n; i++) {
-		result *= 2.0;
+double vy(int k, double d1, double d2, double a)
+{
+	double rad = a * PI / 180;
+	switch (k)
+	{
+	case 2:
+		return 0.6 * d2 * sin(rad);
+	case 4:
+		return -0.4 * d2 * sin(rad);
+	default:
+		return 0;
 	}
-
-	if (use_k) {
-		return result / 1024.0;
-	}
-	return result;
 }
 
-double f(double x) {
-	return 1.8 * pow(x, 2) - sin(10 * x);
-}
-
-void tabulate(double step) {
-	puts("|---------------------------|");
-	puts("|      x         F(x)       |");
-	for (double x = 0.2; x <= 2.2 + 0.0001; x += step) {
-		printf("|%10.4lf | %12.6lf |\n", x, f(x));
+int in_quad(double x, double y, double d1, double d2, double a)
+{
+	int pos = 0, neg = 0;
+	for (int k = 1; k <= 4; k++)
+	{
+		int next = (k == 4) ? 1 : k + 1;
+		double x1 = vx(k, d1, d2, a), y1 = vy(k, d1, d2, a);
+		double x2 = vx(next, d1, d2, a), y2 = vy(next, d1, d2, a);
+		double cross = (x2 - x1) * (y - y1) - (y2 - y1) * (x - x1);
+		if (cross > 1e-9)
+		{
+			pos = 1;
+		}
+		if (cross < -1e-9)
+		{
+			neg = 1;
+		}
 	}
-	puts("|---------------------------|");
-}
-
-double sumN(int n) {
-	double sum = 0.0;
-	for (int i = 1; i <= n; i++) {
-		sum += 1.0 /(sin(i));
-	}
-	return sum;
+	return !(pos && neg);
 }
