@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <locale.h>
 
-#define error -123456
 
 float calculator(float x, char c, float y);
 int is_num(char c);
@@ -35,10 +34,10 @@ int main()
 	puts("Введите два числа и символ между ними: ");
 	float x, y;
 	char c1;
-	scanf("%f %c %f”", &x, &c1, &y);
-	float result2 = calculator(x, c1, y);
-	if (result2 != error){
-		printf("= %f\n", result2);
+	scanf("%f %c %f", &x, &c1, &y);
+	if (can_cal(x, c1, y))
+	{
+		printf("= %f\n", calculator(x, c1, y));
 	}
 	else
 	{
@@ -86,7 +85,26 @@ int main()
 	
 }
 
-
+int can_cal(float x, char c, float y)
+{
+	switch (c)
+	{
+	case '+': case '-': case '*':
+		return 1;
+		break;
+	case '/':
+		if (y == 0)
+		{
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
+	default:
+		return 0;
+	}
+}
 int is_num(char c)
 {
 	switch (c)
@@ -121,16 +139,7 @@ float calculator(float x, char c, float y)
 		return x * y;
 		break;
 	case '/':
-		if (y == 0)
-		{
-			return error;
-		}
-		else
-		{
-			return x / y;
-		}
-	default:
-		return error;
+		return x / y;
 	}
 }
 
