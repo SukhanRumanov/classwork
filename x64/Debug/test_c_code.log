@@ -1,4 +1,30 @@
 ﻿  main.c
-C:\Users\Romochka\source\repos\test_c_code\test_c_code\main.c(58,75): warning C4013: index_max: нет определения; предполагается "extern" с возвратом типа "int"
-C:\Users\Romochka\source\repos\test_c_code\test_c_code\main.c(105,12): warning C4244: return: преобразование "double" в "int", возможна потеря данных
+C:\Users\Romochka\source\repos\test_c_code\test_c_code\main.c(14,9): warning C4477: "printf": в строке форматирования "%lu" требуется аргумент типа "unsigned long", но вариативный аргумент "1" имеет тип "size_t"
+      C:\Users\Romochka\source\repos\test_c_code\test_c_code\main.c(14,9):
+      рекомендуется использовать "%zu" в строке форматирования
+  
+C:\Users\Romochka\source\repos\test_c_code\test_c_code\main.c(15,9): warning C4477: "printf": в строке форматирования "%lu" требуется аргумент типа "unsigned long", но вариативный аргумент "1" имеет тип "size_t"
+      C:\Users\Romochka\source\repos\test_c_code\test_c_code\main.c(15,9):
+      рекомендуется использовать "%zu" в строке форматирования
+  
+C:\Users\Romochka\source\repos\test_c_code\test_c_code\main.c(16,9): warning C4477: "printf": в строке форматирования "%lu" требуется аргумент типа "unsigned long", но вариативный аргумент "1" имеет тип "size_t"
+      C:\Users\Romochka\source\repos\test_c_code\test_c_code\main.c(16,9):
+      рекомендуется использовать "%zu" в строке форматирования
+  
+C:\Users\Romochka\source\repos\test_c_code\test_c_code\main.c(29,9): warning C4477: "printf": в строке форматирования "%g" требуется аргумент типа "double", но вариативный аргумент "2" имеет тип "int"
+C:\Users\Romochka\source\repos\test_c_code\test_c_code\main.c(31,9): warning C4477: "printf": в строке форматирования "%g" требуется аргумент типа "double", но вариативный аргумент "2" имеет тип "int"
+C:\Users\Romochka\source\repos\test_c_code\test_c_code\main.c(33,9): warning C4477: "printf": в строке форматирования "%g" требуется аргумент типа "double", но вариативный аргумент "2" имеет тип "int"
+C:\Users\Romochka\source\repos\test_c_code\test_c_code\main.c(47,7): warning C4133: =: несовместимые типы - из "int *" в "char *"
+C:\Users\Romochka\source\repos\test_c_code\test_c_code\main.c(157,44): warning C4013: size_int: нет определения; предполагается "extern" с возвратом типа "int"
+C:\Users\Romochka\source\repos\test_c_code\test_c_code\main.c(20,13): warning C4305: инициализация: усечение из "double" в "float"
+C:\Users\Romochka\source\repos\test_c_code\test_c_code\main.c(82,21): warning C4305: инициализация: усечение из "double" в "float"
+C:\Users\Romochka\source\repos\test_c_code\test_c_code\main.c(82,26): warning C4305: инициализация: усечение из "double" в "float"
+C:\Users\Romochka\source\repos\test_c_code\test_c_code\main.c(82,31): warning C4305: инициализация: усечение из "double" в "float"
+C:\Users\Romochka\source\repos\test_c_code\test_c_code\main.c(82,36): warning C4305: инициализация: усечение из "double" в "float"
+C:\Users\Romochka\source\repos\test_c_code\test_c_code\main.c(82,46): warning C4305: инициализация: усечение из "double" в "float"
+C:\Users\Romochka\source\repos\test_c_code\test_c_code\main.c(82,51): warning C4305: инициализация: усечение из "double" в "float"
+C:\Users\Romochka\source\repos\test_c_code\test_c_code\main.c(82,56): warning C4305: инициализация: усечение из "double" в "float"
+C:\Users\Romochka\source\repos\test_c_code\test_c_code\main.c(82,61): warning C4305: инициализация: усечение из "double" в "float"
+C:\Users\Romochka\source\repos\test_c_code\test_c_code\main.c(82,66): warning C4305: инициализация: усечение из "double" в "float"
+C:\Users\Romochka\source\repos\test_c_code\test_c_code\main.c(168,24): warning C4244: return: преобразование "__int64" в "int", возможна потеря данных
   test_c_code.vcxproj -> C:\Users\Romochka\source\repos\test_c_code\x64\Debug\test_c_code.exe
