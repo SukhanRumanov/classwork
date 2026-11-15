@@ -1,2 +1,4 @@
 ﻿  main.c
+C:\Users\Romochka\source\repos\test_c_code\test_c_code\main.c(282,3): warning C4033: "graphic" должен возвращать значение
+C:\Users\Romochka\source\repos\test_c_code\test_c_code\main.c(314,1): warning C4715: graphic: значение возвращается не при всех путях выполнения
   test_c_code.vcxproj -> C:\Users\Romochka\source\repos\test_c_code\x64\Debug\test_c_code.exe
